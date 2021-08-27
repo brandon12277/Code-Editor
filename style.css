@@ -1,0 +1,124 @@
+html{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+
+}
+.run_button{
+    margin-left: auto;
+    background:none;
+    color:white;
+    border:none;
+}
+.theme_button{
+    background:none;
+    color:white;
+    border:none;
+}
+.navbar{
+    display:flex;
+    background-color: #171f22;
+    color:white;
+    font-family: 'Bree Serif', serif;
+    width:100%;
+    height:10%;
+}
+.editor{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    height: 45%;
+    background-color: #313131;
+}
+.html_box{
+    margin-top:2%;
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: teal;
+    width:30%;
+    height: 75%;
+}
+.css_box{
+    margin-top:2%;
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: teal;
+    width:30%;
+    height: 75%;
+}
+.js_box{
+    margin-top:2%;
+    margin-left: 2%;
+    border-radius: 20px;
+    background-color: teal;
+    width:30%;
+    height: 75%;
+}
+.heading_name{
+    font-family: 'Bree Serif', serif;
+    font-size:140%;
+    color:white;
+    text-align: center;
+    background-color: #171f22;
+    margin:0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.html_editor{
+    width:100%;
+    height:100%;
+    
+}
+.css_editor{
+    width:100%;
+    height:100%;
+    
+}
+.js_editor{
+    width:100%;
+    height:100%;
+    
+    
+}
+.output{
+    width:100%;
+    height:60%;
+}
+.html_output{
+    display:none;
+    margin:0;
+    padding:0;
+    width:0;
+    height:0;
+    background-color: #171f22;
+}
+.css_output{
+    display:none;
+    margin:0;
+    padding:0;
+    width:0;
+    height:0;
+    background-color: #171f22;
+}
+.js_output{
+    display:none;
+    margin:0;
+    padding:0;
+    width:0;
+    height:0;
+    background-color: #171f22;
+}
+.myForm{
+    display:none;
+}

@@ -1,0 +1,168 @@
+html{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+
+}
+.home_button{
+    border:none;
+    background-color:rgb(6, 119, 53);
+    width:5%;
+}
+.logo_home{
+    transform:scale(1.5);
+}
+.run_button{
+    margin-left: auto;
+    background:none;
+    color:white;
+    border:none;
+}
+.theme_button{
+    margin-right:2%;
+    background:none;
+    color:white;
+    border:none;
+}
+.navbar{
+    display:flex;
+    background-color: #171f22;
+    color:white;
+    font-family: 'Bree Serif', serif;
+    width:100%;
+    height:10%;
+    grid-gap:5%;
+}
+.editor{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    height:100%;
+    background-color: #2c2b2b;
+    resize:vertical;
+    overflow:auto;
+}
+.html_box{
+    margin-top:2%;
+    margin-left: 2%;
+    border-radius: 20px;
+    width:30%;
+    height: 70%;
+}
+.html_editor{
+    font-size:103%;
+}
+.css_editor{
+    font-size:103%;
+}
+.js_editor{
+    font-size:103%;
+}
+.css_box{
+    margin-top:2%;
+    margin-left: 2%;
+    border-radius: 20px;
+  
+    width:30%;
+    height: 70%;
+}
+.js_box{
+    margin-top:2%;
+    margin-left: 2%;
+    border-radius: 20px;
+   
+    width:30%;
+    height: 70%;
+}
+.heading_name{
+    font-family: 'Rubik', sans-serif;
+    font-size:140%;
+    color:white;
+    text-align: center;
+    background-color: #171f22;
+    margin:0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.settings{
+    
+    outline:none;
+}
+.bottom_level{
+    width: 100%;
+    height:10%;
+    background-color: #171f22;
+    margin:0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.html_editor{
+    width:100%;
+    height:100%;
+    
+}
+.css_editor{
+    width:100%;
+    height:100%;
+    
+}
+.js_editor{
+    width:100%;
+    height:100%;
+    
+    
+}
+.output{
+    width:100%;
+    height:100%;
+    outline:none;
+    border:none;
+    overflow:scroll;
+}
+.html_output{
+    display:none;
+    margin:0;
+    padding:0;
+    width:0;
+    height:0;
+    background-color: #171f22;
+}
+.css_output{
+    display:none;
+    margin:0;
+    padding:0;
+    width:0;
+    height:0;
+    background-color: #171f22;
+}
+.js_output{
+    display:none;
+    margin:0;
+    padding:0;
+    width:0;
+    height:0;
+    background-color: #171f22;
+}
+.myForm{
+    display:none;
+}
+.logo-run{
+    transform:scale(2.5);
+    background-color: rgb(6, 119, 53);
+    width:400%;
+    border-radius:5px;
+}
+.logo-theme{
+    transform:scale(2.5);
+}
