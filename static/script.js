@@ -1,5 +1,9 @@
 
+
 //editor for html
+
+
+
 var editor_html = ace.edit("first_editor");
 editor_html.setTheme("ace/theme/monokai");
 editor_html.session.setMode("ace/mode/html");
@@ -14,8 +18,34 @@ var editor_js = ace.edit("third_editor");
 editor_js.setTheme("ace/theme/monokai");
 editor_js.session.setMode("ace/mode/javascript");
 editor_js.setShowPrintMargin(false);
+
+
+
+let resizeObserver = new ResizeObserver(() => {
+  var rect=document.getElementById("editor_element").getBoundingClientRect();
+  var height=document.getElementById("editor_element").style.height;
+  document.getElementById("out_elem").style.height=window.innerHeight-rect.height+"px";
+  if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme"></i>'){
+  editor_html.setTheme("ace/theme/monokai");
+  editor_css.setTheme("ace/theme/monokai");
+  editor_js.setTheme("ace/theme/monokai");
+  }
+  else{
+    editor_html.setTheme("ace/theme/tomorrow");
+  editor_css.setTheme("ace/theme/tomorrow");
+  editor_js.setTheme("ace/theme/tomorrow");
+  }
+});
+
+
+
+var check=$(".editor")[0];
+resizeObserver.observe(check)
   var myHTML,myCSS,myJS;
   var startup=0;
+  editor_html.setAutoScrollEditorIntoView(true);
+  editor_js.setAutoScrollEditorIntoView(true);
+  editor_css.setAutoScrollEditorIntoView(true);
 function myFunction(event) {
 myHTML = editor_html.getSession().getValue();
 myJS = editor_js.getSession().getValue();
@@ -36,9 +66,6 @@ myCSS = editor_css.getSession().getValue();
         document.getElementById('out_elem').contentDocument.location.reload(true);
             }
     });
-  }
-  function change(){
-    document.getElementById("out_elem").style.height=window.innerHeight-document.getElementById("editor_element")+"px";
   }
 function LoadPage(){
   
@@ -64,12 +91,11 @@ function LoadPage(){
 }
 
 var theme=document.getElementById("theme");
-theme.addEventListener("click",()=>{
- 
-});
 
 document.getElementById("theme").addEventListener("click",()=>{
+  myFunction();
   if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme"></i>'){
+ 
   editor_html.setTheme("ace/theme/tomorrow");
   editor_css.setTheme("ace/theme/tomorrow");
   editor_js.setTheme("ace/theme/tomorrow");
@@ -82,6 +108,7 @@ document.getElementById("theme").addEventListener("click",()=>{
   document.getElementById("theme").innerHTML='<i class="fas fa-moon logo-theme"></i>';
   }
   else{
+    
     editor_html.setTheme("ace/theme/monokai");
     editor_css.setTheme("ace/theme/monokai");
     editor_js.setTheme("ace/theme/monokai");
