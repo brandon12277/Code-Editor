@@ -37,6 +37,9 @@ myCSS = editor_css.getSession().getValue();
             }
     });
   }
+  function change(){
+    document.getElementById("out_elem").style.height=window.innerHeight-document.getElementById("editor_element")+"px";
+  }
 function LoadPage(){
   
   var html_page_load="<div class='Online_Code_Editor_Intro'>\n<h1>WELCOME TO ONLINE CODE EDITOR</h1>\n<h2>A FREE ONLINE CODE EDITOR FOR WEB DESIGN</h2>\n <h3>EASY TO USE</h3>\n</div>";
@@ -59,9 +62,7 @@ function LoadPage(){
             }
     });
 }
-function Output_element_resize(){
-  document.getElementById("out_elem").style.height=100-document.getElementById("editor_element").style.height+"%";
-}
+
 var theme=document.getElementById("theme");
 theme.addEventListener("click",()=>{
  
@@ -93,3 +94,15 @@ document.getElementById("theme").addEventListener("click",()=>{
     document.getElementById("theme").innerHTML='<i class="fas fa-sun logo-theme"></i>';
   }
 });
+
+ 
+    
+
+
+   
+  
+   
+  
+
+
+
