@@ -20,12 +20,14 @@ editor_js.session.setMode("ace/mode/javascript");
 editor_js.setShowPrintMargin(false);
 
 
-
+var initialTheme='<i class="fas fa-sun logo-theme"></i>';
 let resizeObserver = new ResizeObserver(() => {
   var rect=document.getElementById("editor_element").getBoundingClientRect();
   var height=document.getElementById("editor_element").style.height;
   document.getElementById("out_elem").style.height=window.innerHeight-rect.height+"px";
-  if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme"></i>'){
+  
+  if(document.getElementById("theme").innerHTML==initialTheme){
+    initialTheme='<i class="fas fa-sun logo-theme" style="user-select: auto;"></i>';
   editor_html.setTheme("ace/theme/monokai");
   editor_css.setTheme("ace/theme/monokai");
   editor_js.setTheme("ace/theme/monokai");
@@ -71,7 +73,7 @@ function LoadPage(){
   
   var html_page_load="<div class='Online_Code_Editor_Intro'>\n<h1>WELCOME TO ONLINE CODE EDITOR</h1>\n<h2>A FREE ONLINE CODE EDITOR FOR WEB DESIGN</h2>\n <h3>EASY TO USE</h3>\n</div>";
   editor_html.session.insert({0:0,1:0},html_page_load);
-  var css_page_load="html{\nwidth:100%;\nheight:100%;\n}\nbody{background-color:white;}\n.Online_Code_Editor_Intro{\nwidth:100%;\nheight:100%;\ntext-align:center;\ncolor:black;\nfont-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;\nbackground-color: white;\n}";
+  var css_page_load="html{\nwidth:100%;\nheight:100%;\n}\nbody{background-color:white;}\n.Online_Code_Editor_Intro{\nwidth:100%;\nheight:100%;\ntext-align:center;\ncolor:black;\nfont-family:'Franklin Gothic Medium', \n'Arial Narrow', Arial, sans-serif;\nbackground-color: white;\n}";
   editor_css.session.insert({0:0,1:0},css_page_load);
   var js_page_load="function Online_Editor(){\nconsole.log('WELCOME TO ONLINE CODE EDITOR');\n}";
   editor_js.session.insert({0:0,1:0},js_page_load);
@@ -93,8 +95,7 @@ function LoadPage(){
 var theme=document.getElementById("theme");
 
 document.getElementById("theme").addEventListener("click",()=>{
-  myFunction();
-  if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme"></i>'){
+  if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme" style="user-select: auto;"></i>'){
  
   editor_html.setTheme("ace/theme/tomorrow");
   editor_css.setTheme("ace/theme/tomorrow");
@@ -121,9 +122,7 @@ document.getElementById("theme").addEventListener("click",()=>{
     document.getElementById("theme").innerHTML='<i class="fas fa-sun logo-theme"></i>';
   }
 });
-
  
-    
 
 
    
