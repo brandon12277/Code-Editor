@@ -30,12 +30,14 @@ body{
     background:none;
     color:white;
     border:none;
+    cursor: pointer;
 }
 .theme_button{
     margin-right:2%;
     background:none;
     color:white;
     border:none;
+    cursor: pointer;
 }
 .navbar{
     display:flex;
