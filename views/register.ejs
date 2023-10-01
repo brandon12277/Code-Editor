@@ -18,7 +18,7 @@
 
   <div class="container">
     <h2>Register</h2>
-    <form action="#" method="POST">
+    <form action="#" method="POST"  onsubmit="return validateForm()">
     <div class="input-group">
             <input type="text" id="username" name="name" required>
             <label for="name">Name</label>
@@ -32,8 +32,8 @@
         <label for="email">Email</label>
     </div>
     <div class="input-group">
-      <input onchange="validateAndFormatMobileNumber()" type="text" id="mobileNumber" name="mobileNumber" required
-        
+      <input type="tel" id="mobileNumber" name="mobileNumber" required
+      pattern="[0-9]{10}" maxlength="10"
         name="phone">
         <label for="phone">Phone</label>
     </div>
@@ -42,14 +42,38 @@
         <label for="password">Password</label>
     </div>
     <div class="input-group">
-        <input type="password" id="password" name="conf_password" required>
+        <input type="password" id="confirmPassword" name="conf_password" required>
         <label for="confirm password">Confirm Password</label>
     </div>
+    <p id="passwordError"></p>
       <button type="submit" class="btn">Register</button>
     </form>
   </div>
 </body>
 <script>
+ document.getElementById('mobileNumber').addEventListener('input', function () {
+            var input = this.value;
+            if (/^[0-9]+$/.test(input)) {
+              
+            } else {
+               
+                this.value = input.replace(/[^0-9]/g, ''); // Remove non-numeric characters from the input
+            }
+        });
+
+        function validateForm() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                passwordError.textContent = "Passwords do not match.";
+                return false; // Prevent form submission
+            } else {
+                passwordError.textContent = "";
+                return true; // Allow form submission
+            }
+        }
   function responsive(){
 
    
@@ -66,29 +90,7 @@
 
 
   }
-  function validateAndFormatMobileNumber() {
-  // Get the input element
-  const mobileNumberInput = document.getElementById('mobileNumber');
-  
-  // Get the user's input
-  let mobileNumber = mobileNumberInput.value;
-
-  // Remove any non-numeric characters (e.g., spaces, dashes)
-  mobileNumber = mobileNumber.replace(/\D/g, '');
-
-  // Define a regular expression pattern for a valid mobile number (customize as needed)
-  const mobileNumberPattern = /^\d{10}$/; // Example: 10-digit mobile number
-
-  if (mobileNumberPattern.test(mobileNumber)) {
-    // The input is a valid mobile number, format it as needed (e.g., add dashes)
-    mobileNumber = mobileNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-    mobileNumberInput.value = mobileNumber; // Set the formatted value back to the input
-  } else {
-    // The input is not a valid mobile number, you can display an error message
-    alert('Please enter a valid 10-digit mobile number.');
-    mobileNumberInput.value = ''; // Clear the input field
-  }
-}
+ 
   function nav_close(){
 
    
