@@ -1,0 +1,365 @@
+html,body{
+    background: linear-gradient(45deg,#1c1c1c,#0d140c);
+}
+.dashboard{
+    width:100%;
+    height:100%;
+    background: linear-gradient(45deg,#1c1c1c,#0d140c);
+}
+
+#user-logo{
+    transform:scale(1.5);
+    color: white;
+    
+    margin-left: 1%;
+    padding:0.5%;
+}
+
+#down{
+    
+    color: white;
+   
+   
+}
+.user{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: bold;
+    margin-left: 1%;
+    
+    
+}
+
+.dash-nav{
+    width:100%;
+    height:7%;
+    box-shadow: #1c1c1c 0px 0px 3px;
+    background-color: #222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dash-nav-contents{
+    width:100%;
+    height:100%;
+    
+    display: flex;
+    align-items: end;
+    
+   
+}
+.dash-nav-button{
+    font-size: large;
+   
+    font-family: 'Poppins', sans-serif;
+    border :none;
+    background: none;
+}
+.log_out{
+    outline:none;
+    border : 1px solid #ff6961;
+    box-shadow: #ff6961 0px 0px 3px;
+    background-color: #ff6961 ;
+    color:white;
+    width:100px;
+    height:40px;
+    cursor:pointer;
+    margin: 2%;
+    font-family: 'Poppins', sans-serif;
+}
+.dash-main-page{
+    width:100%;
+    height:63%;
+    margin-top: 5%;
+    
+}
+.dash-no-load{
+    width:100%;
+    height:63%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#project-logo{
+    color : #d2d2d2;
+    transform: scale(2);
+}
+.main-disp{
+    font-family: 'Poppins', sans-serif;
+    color : #d2d2d2;
+    font-size: large;
+    font-weight: 700;
+}
+.add_project{
+    width:200px;
+    height:40px;
+    outline:none;
+    background: none;
+    border: 1px solid #d2d2d2;
+    font-family: 'Poppins', sans-serif;
+    color:#d2d2d2;
+    
+    cursor: pointer;
+}
+
+.project-block{
+    width:95%;
+    border:1px solid #d2d2d2;
+    border-radius: 0.45em;
+    margin: 3%;
+    color:white;
+    display: flex;
+    align-items: center;
+    gap:1%;
+    font-family: 'Poppins', sans-serif;
+}
+.project-block-buttons{
+    width:100%;
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+   
+   
+}
+#block-logo{
+ margin: 2%;
+ color: #d2d2d2;
+}
+.block-head{
+  font-size: large;
+  width:100%;
+}
+.block-button{
+    outline:none;
+  border : 1px solid #71BC68;
+  background: none;
+  color:white;
+  width:100px;
+  height:40px;
+  cursor:pointer;
+  margin-right: 2%;
+  font-family: 'Poppins', sans-serif;
+}
+.collab-text{
+    color:#1c1c1c;
+    background-color: #71BC68;
+    border-radius: 0.45em;
+    padding:0.5%;
+}
+.input-box-users{
+    margin-top: 2%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:1%;
+}
+.project-finder{
+    width:400px;
+    border:#71BC68 1px solid;
+    border-radius: 0.45em;
+    outline:none;
+    font-family: 'Poppins', sans-serif;
+    background: none;
+    color:white;
+    padding:1%;
+}
+.projects-list-buttons{
+    width:100%;
+    border:none;
+    border-radius: 0.45em;
+    outline:none;
+    font-family: 'Poppins', sans-serif;
+    background: none;
+    color:white;
+    text-align: left;
+    cursor: pointer;
+    transition:0.5s;
+}
+.projects-list-buttons:hover{
+   background-color: rgb(56, 56, 56);
+}
+.projects{
+    width:100%;
+
+}
+.project-finder-box{
+    width:60%;
+    display: flex;
+  
+    justify-content: center;
+}
+#projects-list{
+    
+    border:1px solid grey;
+    border-radius:0.45em;
+    width:60%;
+    display:none;
+    flex-direction: column;
+    margin-top: 1%;
+   
+}
+.request-block{
+    width:95%;
+    border:1px solid #d2d2d2;
+    border-radius: 0.45em;
+    margin: 2%;
+    padding-left:2%;
+    color:white;
+    display: flex;
+    flex-direction: column;
+   
+    gap:1%;
+    font-family: 'Poppins', sans-serif;
+}
+.request-block-buttons{
+    width:50%;
+    display: flex;
+    align-items: center;
+    gap:5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    justify-content: flex-start;
+}
+.check-button{
+    outline:none;
+    background: none;
+    border:none;
+    cursor:pointer;
+
+}
+.block-title{
+    margin-top: 1%;
+    font-size: 100%;
+}
+#size{
+    transform:scale(2);
+}
+p{
+    padding:0px;
+    margin:0px;
+}
+
+.description_check{
+    margin-top:1%;
+    margin-bottom: 1%;
+    width:20%;
+    outline:none;
+    background: none;
+    border: 1px solid #d2d2d2;
+    font-family: 'Poppins', sans-serif;
+    color:#d2d2d2;
+    
+    cursor: pointer;
+}
+
+@media screen and (max-width: 780px) {
+    .block-head{
+        font-size:small;
+      }
+      .block-button{
+      
+      width:100px;
+      height:20px;
+      
+    }
+    .add_project{
+        width:110px;
+        height:40px;
+       
+    }
+    .dash-main-page{
+       
+        margin-top: 10%;
+        
+    }
+    .dash-nav{
+        
+        height:15%;
+        
+    }
+    .project-block{
+        
+        margin-top: 10%;
+        
+    }
+    .user{
+       font-size: small;
+        
+        
+    }
+    .collab-text{
+        color:#1c1c1c;
+        background-color: #71BC68;
+        border-radius: 0.45em;
+        font-size: small;
+        padding:0.2%;
+    }
+}
+.active-link{
+    border-bottom : 3px solid #71BC68; 
+}
+.deactivate{
+    display: none;
+}
+.search{
+    outline:none;
+    background:none;
+    border:none;
+    color:white;
+    cursor: pointer;
+}
+.blackscreen{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position:absolute;
+   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 9999;
+}
+.prompt-delete{
+    color:black;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    width:30%;
+    height:30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.45em;
+    font-size: small;
+}
+.delete-button{
+    outline:none;
+    background-color:rgb(224, 80, 80);
+    color:white;
+    border-radius: 0.45em;
+    border: none;
+    width:100px;
+    height:40px;
+    cursor:pointer;
+    margin-right: 2%;
+    font-family: 'Poppins', sans-serif;
+}
+.no-button{
+    outline:none;
+    background-color:greenyellow;
+    color:#1c1c1c;
+    font-weight: bold;
+    border-radius: 0.45em;
+    border: none;
+    width:100px;
+    height:40px;
+    cursor:pointer;
+    margin-right: 2%;
+    font-family: 'Poppins', sans-serif;
+}

@@ -1,6 +1,8 @@
 
 
-//editor for html
+// editor for html
+
+console.log(project)
 
 
 
@@ -27,18 +29,6 @@ let resizeObserver = new ResizeObserver(() => {
   var rect=document.getElementById("editor_element").getBoundingClientRect();
   var height=document.getElementById("editor_element").style.height;
   document.getElementById("out_elem").style.height=window.innerHeight-rect.height+"px";
-  if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme"></i>' || document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme" style="user-select: auto;"></i>'){
-    console.log(document.getElementById("theme").innerHTML)
-    
-  editor_html.setTheme("ace/theme/monokai");
-  editor_css.setTheme("ace/theme/monokai");
-  editor_js.setTheme("ace/theme/monokai");
-  }
-  else{
-    editor_html.setTheme("ace/theme/tomorrow");
-  editor_css.setTheme("ace/theme/tomorrow");
-  editor_js.setTheme("ace/theme/tomorrow");
-  }
 });
 
 
@@ -50,82 +40,68 @@ resizeObserver.observe(check)
   editor_html.setAutoScrollEditorIntoView(true);
   editor_js.setAutoScrollEditorIntoView(true);
   editor_css.setAutoScrollEditorIntoView(true);
-function myFunction(event) {
+
+
+
+function myFunction(event,link) {
+  event.preventDefault();
 myHTML = editor_html.getSession().getValue();
 myJS = editor_js.getSession().getValue();
 myCSS = editor_css.getSession().getValue();
   document.getElementById("output_html").innerHTML=myHTML;
   document.getElementById("output_css").innerHTML=myCSS;
   document.getElementById("output_js").innerHTML=myJS;
+  
+  project_name = document.getElementById("block-head").innerHTML
+  let url = '/'+project.id+'/'+link;
   $.ajax({
     type:'POST',
-    url:'/answer',
+    url: url,
     data:
     {
+        project_name : project_name,
         html:myHTML,
         css:myCSS,
         js:myJS
     },
     success:function(){
+        console.log("hello bitch")
         document.getElementById('out_elem').contentDocument.location.reload(true);
             }
     });
   }
+
+  
+
+
+
 function LoadPage(){
   
-  var html_page_load="<div class='Online_Code_Editor_Intro'>\n<h1>WELCOME TO ONLINE CODE EDITOR</h1>\n<h2>A FREE ONLINE CODE EDITOR FOR WEB DESIGN</h2>\n <h3>EASY TO USE</h3>\n</div>";
+  var html_page_load=project.html;
   editor_html.session.insert({0:0,1:0},html_page_load);
-  var css_page_load="html{\nwidth:100%;\nheight:100%;\n}\nbody{\nbackground-color:white;\n}\n.Online_Code_Editor_Intro{\nwidth:100%;\nheight:100%;\ntext-align:center;\ncolor:black;\nfont-family:'Franklin Gothic Medium', \n'Arial Narrow', Arial, sans-serif;\nbackground-color: white;\n}";
+  var css_page_load=project.css;
   editor_css.session.insert({0:0,1:0},css_page_load);
-  var js_page_load="function Online_Editor(){\nconsole.log('WELCOME TO ONLINE CODE EDITOR');\n}";
+  var js_page_load=project.js;
   editor_js.session.insert({0:0,1:0},js_page_load);
-  $.ajax({
-    type:'POST',
-    url:'/answer',
-    data:
-    {
-        html:html_page_load,
-        css:css_page_load,
-        js:js_page_load
-    },
-    success:function(){
-        document.getElementById('out_elem').contentDocument.location.reload(true);
-            }
-    });
+
+
+  // $.ajax({
+  //   type:'POST',
+  //   url: url,
+  //   data:
+  //   {
+  //       html:html_page_load,
+  //       css:css_page_load,
+  //       js:js_page_load
+  //   },
+  //   success:function(){
+  //       document.getElementById('out_elem').contentDocument.location.reload(true);
+  //           }
+  //   });
 }
 
 var theme=document.getElementById("theme");
 
-document.getElementById("theme").addEventListener("click",()=>{
-  myFunction(event);
-if(document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme"></i>' || document.getElementById("theme").innerHTML=='<i class="fas fa-sun logo-theme" style="user-select: auto;"></i>'){
-  initialTheme='<i class="fas fa-sun logo-theme" style="user-select: auto;"></i>';
-  editor_html.setTheme("ace/theme/tomorrow");
-  editor_css.setTheme("ace/theme/tomorrow");
-  editor_js.setTheme("ace/theme/tomorrow");
-  $(".navbar").css("background-color","#dcdcdc");
-  $(".editor").css("background-color","white");
-  $(".heading_name").css("background-color","#dcdcdc");
-  $(".bottom_level").css("background-color","#dcdcdc");
-  $(".heading_name").css("color","black");
-  document.querySelector(".main_logo").src="/logo-day.png";
-  document.getElementById("theme").innerHTML='<i class="fas fa-moon logo-theme"></i>';
-  }
-  else{
-    
-    editor_html.setTheme("ace/theme/monokai");
-    editor_css.setTheme("ace/theme/monokai");
-    editor_js.setTheme("ace/theme/monokai");
-    $(".navbar").css("background-color","#171f22");
-    $(".editor").css("background-color","#2c2b2b");
-    $(".heading_name").css("background-color","#171f22");
-    $(".bottom_level").css("background-color","#171f22");
-    $(".heading_name").css("color","white");
-    document.querySelector(".main_logo").src="/logo-night.png";
-    document.getElementById("theme").innerHTML='<i class="fas fa-sun logo-theme"></i>';
-  }
-});
- 
 
 
    

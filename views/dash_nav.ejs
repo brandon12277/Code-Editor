@@ -1,0 +1,25 @@
+<div class="navbar" style="justify-content: flex-start;">
+    <i id="user-logo" class="fa-solid fa-user"></i>
+    <p class="user"><%= datatoSend.user.username %></p>
+    <div class="nav-contents-top" style="gap:1.5%;">
+        <button class="add_project" ><a style="text-decoration: none;color:#d2d2d2" target="_blank"  href='/addProject1516302295?user_name=<%= datatoSend.user.username %>'+><i id="block-logo" class="fa-solid fa-diagram-project"></i>New Project</a></button>
+        <button class="log_out"><a style="text-decoration: none;color:white" href="/logout">Log out</a></button>
+        
+       
+    </div>
+</div>
+<div class="dash-nav">
+    <div class="dash-nav-contents" style="gap:1.5%;">
+        <button id="projects" class="dash-nav-button <%= datatoSend.projects ? 'active-link' : '' %>"><a style="text-decoration: none;color:white" href="/dashboard">Projects</a></button>
+        <button  id="collab" class="dash-nav-button <%= datatoSend.collabs ? 'active-link' : '' %>"><a style="text-decoration: none;color:white" href="/dashboard/collaborations">Collaborations</a></button>
+        <button id="change-req" class="dash-nav-button <%= datatoSend.requests ? 'active-link' : '' %>"><a style="text-decoration: none;color:white" href="/dashboard/change_requests">Change Requests</a></button>
+       
+       
+    </div>
+    <div class="nav-contents" style="gap:1.5%;">
+        <button class="add_project <%= datatoSend.projects ? '' : 'deactivate' %>" ><a style="text-decoration: none;color:#d2d2d2" target="_blank"  href='/addProject1516302295?user_name=<%= datatoSend.user.username %>'+><i id="block-logo" class="fa-solid fa-diagram-project"></i>New Project</a></button>
+        <button class="log_out"><a style="text-decoration: none;color:white" href="/logout">Log out</a></button>
+        
+       
+    </div>
+</div>

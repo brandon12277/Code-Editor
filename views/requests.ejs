@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Requests</title>
+</head>
+
+<body>
+    <div class="dashboard">
+        <%- include('dash_nav.ejs'), { currentPage: 'request' } %>
+        <div class="dash-main-page">
+           
+            <% if(datatoSend.requests  === undefined || datatoSend.requests.length == 0){ %>
+            <div class="dash-no-load">
+                <i id="project-logo" class="fa-solid fa-diagram-project"></i>
+                <p class="main-disp">No Requests Currently</p>
+                
+            </div>
+              <% } else{ %>  
+                <% datatoSend.requests.forEach(function(data){ %>
+                       
+                             <div class="request-block">
+                                <p style="font-size:200%" class="block-head" ><%= data.title%></p>
+                                <p class="block-title" style="color:grey;"><%= data.description%></p>
+                                <button  class="description_check"><a style="color:grey;text-decoration: none;" href="/dashboard/change_requests/<%= data.collaboration_id %>">Evaluate Changes</a></button>
+                                <div class="request-block-buttons">
+                                    <button onclick="AcceptChange('<%= data.collaboration_id %>','/<%= data.id %>/AcceptRequest')" class="check-button"><a style="text-decoration: none;color:#71BC68" ><i id="size" class="fa-solid fa-check"></i></a></button>
+                                    <button class="check-button"><a href="/<%= data.id %>/DeleteRequest" style="text-decoration: none;color:#ff6961" ><i id= "size" class="fa-solid fa-circle-xmark"></i></a></button>
+                                </div>
+
+                             </div>
+               <% }) %>
+               
+             <% } %>
+        </div>
+
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    var datatoSend='<%-JSON.stringify(datatoSend)%>'
+datatoSend = JSON.parse(datatoSend)
+console.log(datatoSend)
+if(datatoSend.requests === undefined) window.location.reload()
+
+function AcceptChange(collab_id,url){
+
+    console.log(url)
+    $.ajax({
+    type:'POST',
+    data:
+      {
+          collab_id:collab_id,
+      },
+    url: url,
+    success:function(data){
+      console.log(data)
+        window.location.reload()
+            }
+    });
+  }
+    
+
+
+
+</script>
+
+<script src="/collab.js"></script>
+
+  
+
+    
+</script>
+
+</html>

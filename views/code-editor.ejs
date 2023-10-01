@@ -1,0 +1,49 @@
+<div class="navbar" id="nav">
+    <p contenteditable="<%- link === 'answer'? '' : 'false' %>"  class="block-head" id="block-head"><%= project.project_name %></p>
+   
+    <button class="run_button" id="run" onclick="myFunction(event , '<%= link %>')"><i class="fas fa-caret-right logo-run"></i></button>
+    <button class="<%- link === 'answer'? 'hide' : '' %>"  id="changes" onclick="CommitChanges()">Make Changes</button>
+ </div>
+ <div id="blur-container">
+    
+    <div  id="commit_box">
+       <button class="go-back-button" onclick="GobacktoEditor()"><i class="fa-solid fa-arrow-left"></i>Go back to editor</button>
+         <h3 style="margin:2%;">Commit Changes</h3>
+         <input type="text" placeholder="Title" class="commit" id="title">
+         <textarea class="commit" style="resize:none;" placeholder="description" id="desc"></textarea>
+         <button onclick="Commit()" class="push-button">Push request</button>
+    </div>
+</div>
+ <div id="s_nav" class="select_nav">
+    <button id="html" class="select_nav_butt" >HTML</button>
+    <button id="css" class="select_nav_butt" >CSS</button>
+    <button id="js" class="select_nav_butt" >JS</button>
+    
+</div>
+ <div class="editor" id="editor_element" >
+    <div class="html_box">
+        <div class="elem_nav">
+            <h3 class="heading_name">HTML</h3>
+            
+        </div>
+        <div class="html_editor" id="first_editor"></div>
+        
+    </div>
+    
+    <div class="css_box">
+        <h3 class="heading_name">CSS</h3>
+        <div class="css_editor" id="sec_editor"></div>
+        
+    </div>
+    <div class="js_box">
+        <h3 class="heading_name">JS</h3>
+        <div class="js_editor" id="third_editor"></div>
+    </div>
+    
+ </div>
+ <iframe id="out_elem" src="/<%= project.id %>/<%= link %>" class="output">
+
+ </iframe>
+ <textarea form ="myForm" class="html_output" name="html" id="output_html"></textarea>
+<textarea form ="myForm" class="css_output" name="css" id="output_css"></textarea>
+<textarea form ="myForm" class="js_output" name="js" id="output_js"></textarea>

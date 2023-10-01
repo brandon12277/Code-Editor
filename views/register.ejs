@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<title>Register Page</title>
+<style>
+ 
+</style>
+</head>
+<body>
+  <%- include('navbar.ejs') %>
+
+  <div class="container">
+    <h2>Register</h2>
+    <form action="#" method="POST">
+    <div class="input-group">
+            <input type="text" id="username" name="name" required>
+            <label for="name">Name</label>
+    </div>
+    <div class="input-group">
+            <input type="text" id="username" name="username" required>
+            <label for="username">Username</label>
+    </div>
+    <div class="input-group">
+        <input type="email" id="username" name="email" required>
+        <label for="email">Email</label>
+    </div>
+    <div class="input-group">
+      <input onchange="validateAndFormatMobileNumber()" type="text" id="mobileNumber" name="mobileNumber" required
+        
+        name="phone">
+        <label for="phone">Phone</label>
+    </div>
+    <div class="input-group">
+        <input type="password" id="password" name="password" required>
+        <label for="password">Password</label>
+    </div>
+    <div class="input-group">
+        <input type="password" id="password" name="conf_password" required>
+        <label for="confirm password">Confirm Password</label>
+    </div>
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+</body>
+<script>
+  function responsive(){
+
+   
+          document.getElementById('nav-long').style.display='flex'
+          document.getElementById('nav').style.visibility='hidden'
+         
+ 
+
+
+// Unlock scroll
+
+
+// Prevent the default scroll behavi
+
+
+  }
+  function validateAndFormatMobileNumber() {
+  // Get the input element
+  const mobileNumberInput = document.getElementById('mobileNumber');
+  
+  // Get the user's input
+  let mobileNumber = mobileNumberInput.value;
+
+  // Remove any non-numeric characters (e.g., spaces, dashes)
+  mobileNumber = mobileNumber.replace(/\D/g, '');
+
+  // Define a regular expression pattern for a valid mobile number (customize as needed)
+  const mobileNumberPattern = /^\d{10}$/; // Example: 10-digit mobile number
+
+  if (mobileNumberPattern.test(mobileNumber)) {
+    // The input is a valid mobile number, format it as needed (e.g., add dashes)
+    mobileNumber = mobileNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    mobileNumberInput.value = mobileNumber; // Set the formatted value back to the input
+  } else {
+    // The input is not a valid mobile number, you can display an error message
+    alert('Please enter a valid 10-digit mobile number.');
+    mobileNumberInput.value = ''; // Clear the input field
+  }
+}
+  function nav_close(){
+
+   
+document.getElementById('nav-long').style.display='none'
+document.getElementById('nav').style.visibility='visible'
+
+lockScroll()
+
+
+// Unlock scroll
+
+
+// Prevent the default scroll behavi
+
+
+}
+ 
+</script>
+</html>

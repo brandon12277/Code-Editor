@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,43 +23,76 @@
     <title>Code Editor</title>
 </head>
 <body onload="LoadPage()">
-    <div class="navbar">
-        <img class="main_logo" src="/logo-night.png">
-        <button class="run_button" id="run" onclick="myFunction(event)"><i class="fas fa-caret-right logo-run"></i></button>
-        <button class="theme_button" id="theme"><i class="fas fa-sun logo-theme"></i></button>
-     </div>
-     
-     <div class="editor" id="editor_element" >
-        <div class="html_box">
-            <div class="elem_nav">
-                <h3 class="heading_name">HTML</h3>
-                
-            </div>
-            <div class="html_editor" id="first_editor"></div>
-            
-        </div>
-        
-        <div class="css_box">
-            <h3 class="heading_name">CSS</h3>
-            <div class="css_editor" id="sec_editor"></div>
-            
-        </div>
-        <div class="js_box">
-            <h3 class="heading_name">JS</h3>
-            <div class="js_editor" id="third_editor"></div>
-        </div>
-        
-     </div>
-     <iframe id="out_elem" src="/answer" class="output">
-
-     </iframe>
-     <form  id="myForm" action="/answer" method=POST>
-
-     </form>
-     <textarea form ="myForm" class="html_output" name="html" id="output_html"></textarea>
-<textarea form ="myForm" class="css_output" name="css" id="output_css"></textarea>
-<textarea form ="myForm" class="js_output" name="js" id="output_js"></textarea>
+    <%- include('code-editor.ejs')%>
+    
 </body>
+
+<script>
+const mediaQuery = window.matchMedia('(min-width: 870px)');
+
+// Function to handle the media query change
+function handleScreenChange(event) {
+  if (event.matches) {
+    
+    document.querySelectorAll(".html_box")[0].style.display="flex";
+    document.querySelectorAll(".js_box")[0].style.display="flex";
+    document.querySelectorAll(".css_box")[0].style.display="flex";
+    
+   
+  } else {
+    document.querySelectorAll(".js_box")[0].style.display="none";
+    document.querySelectorAll(".css_box")[0].style.display="none";
+  }
+}
+
+// Attach an event listener to the media query
+mediaQuery.addListener(handleScreenChange);
+
+// Call the function initially to handle the current screen size
+handleScreenChange(mediaQuery);
+
+    document.getElementById("html").addEventListener("click",()=>{
+        document.querySelectorAll(".html_box")[0].style.display="flex";
+        document.querySelectorAll(".js_box")[0].style.display="none";
+        document.querySelectorAll(".css_box")[0].style.display="none";
+    })
+    document.getElementById("css").addEventListener("click",()=>{
+        document.querySelectorAll(".html_box")[0].style.display="none";
+        document.querySelectorAll(".js_box")[0].style.display="none";
+        document.querySelectorAll(".css_box")[0].style.display="flex";
+    })
+    document.getElementById("js").addEventListener("click",()=>{
+        document.querySelectorAll(".html_box")[0].style.display="none";
+        document.querySelectorAll(".js_box")[0].style.display="flex";
+        document.querySelectorAll(".css_box")[0].style.display="none";
+    })
+
+
+    var encodedHtmlData = '<%- JSON.stringify(htmlContent) %>';
+    encodedHtmlData = encodedHtmlData.substring(1,encodedHtmlData.length-1)
+    encodedHtmlData = encodedHtmlData.replace(/^\s+/, '')
+    var encodedcssData = '<%- JSON.stringify(cssContent) %>';
+    encodedcssData = encodedcssData.substring(1,encodedcssData.length-1)
+    encodedcssData = encodedcssData.replace(/^\s+/, '')
+    var encodedjsData = '<%- JSON.stringify(jsContent) %>';
+    encodedjsData = encodedjsData.substring(1,encodedjsData.length-1)
+    encodedjsData = encodedjsData.replace(/^\s+/, '')
+
+    console.log(encodedHtmlData)
+    console.log(encodedcssData)
+    console.log(encodedjsData)
+    var project={
+        id : '<%= project.id %>',
+        project_name : '<%= project.project_name %>',
+        html : encodedHtmlData,
+        css :encodedcssData,
+        js : encodedjsData
+        
+    }
+   
+</script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

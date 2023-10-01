@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Login Page</title>
+<style>
+ 
+</style>
+</head>
+<body>
+  <%- include('navbar.ejs') %>
+
+  <div class="container">
+    
+    <h2>Login</h2>
+    
+      <div class="input-group">
+        <input type="text" id="username" name="username" required>
+        <label for="username">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" name="password" required>
+        <label for="password">Password</label>
+      </div>
+      <p id="text"></p>
+      <button onclick="login()" type="submit" class="btn">Login</button>
+    
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+  function responsive(){
+
+   
+          document.getElementById('nav-long').style.display='flex'
+          document.getElementById('nav').style.visibility='hidden'
+         
+ 
+
+
+// Unlock scroll
+
+
+// Prevent the default scroll behavi
+
+
+  }
+  function login(){
+    
+    var username = document.getElementById("username").value
+    var password = document.getElementById("password").value
+    $.ajax({
+    type:'POST',
+    async:true,
+    data:
+      {
+          username:username,
+          password:password
+      },
+    url:"/login",
+    success:function(data){
+      
+        window.location.href="/dashboard"
+     
+      },
+    error:function(data){
+      console.log(data)
+      document.getElementById("text").innerHTML="Username and password incorrect"
+    }
+    
+    });
+  }
+  function nav_close(){
+
+   
+document.getElementById('nav-long').style.display='none'
+document.getElementById('nav').style.visibility='visible'
+
+lockScroll()
+
+
+// Unlock scroll
+
+
+// Prevent the default scroll behavi
+
+
+}
+ 
+</script>
+</html>

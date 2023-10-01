@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Collabs</title>
+</head>
+<style>
+    @media screen and (max-width: 780px) {
+
+        .project-block-buttons{
+    
+    flex-direction: column;
+    gap:10%;
+   
+   
+}
+    }
+</style>
+<body>
+    <div class="dashboard">
+        <%- include('dash_nav.ejs'),{currentPage : 'collab'} %>
+        <div class="input-box-users">
+            <div style="display:flex;" class="project-finder-box">
+                <input  id="project-finder" class="project-finder" type="text" name="project_name" placeholder="Search for 'project name' ">
+                <button onclick="FindProjects(event)" class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div id="projects-list">
+         
+            </div>
+          
+        </div>
+        <div class="dash-main-page">
+           
+            <% if(datatoSend.collabs  === undefined || datatoSend.collabs.length == 0){ %>
+            <div class="dash-no-load">
+                <i id="project-logo" class="fa-solid fa-diagram-project"></i>
+                <p class="main-disp">No Collaboration Projects Currently</p>
+                
+            </div>
+              <% } else{ %>  
+                <% datatoSend.collabs.forEach(function(data){ %>
+                       
+                             <div class="project-block">
+                                <i id="block-logo" class="fa-solid fa-diagram-project"></i>
+                                <p class="collab-text">Collaboration</p>
+                                <p class="block-head" ><%= data.projectName%><span style="color:rgb(194, 194, 194);font-size:small;margin-left: 3%;">Created by <%= data.username %></span></p>
+                                <div class="project-block-buttons">
+                                    <button class="block-button"><a style="text-decoration: none;color:white" href="/<%= datatoSend.user.username %>/projectCollab?id=<%= data.project_id %>&project_name=<%= data.projectName%> "><i class="fa-solid fa-pen"></i>Edit</a></button>
+                                    
+                                </div>
+
+                             </div>
+               <% }) %>
+               
+             <% } %>
+        </div>
+
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    var datatoSend='<%-JSON.stringify(datatoSend)%>'
+datatoSend = JSON.parse(datatoSend)
+console.log(datatoSend)
+// if(datatoSend.collabs === undefined) window.location.reload()
+</script>
+<script src="/collab.js"></script>
+  
+    
+</script>
+
+</html>

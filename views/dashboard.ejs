@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Dashboard</title>
+</head>
+
+<body>
+    
+    <div class="dashboard">
+        <%- include('dash_nav.ejs'), { currentPage: 'dash' } %>
+        <div class="dash-main-page">
+           
+            <% if(datatoSend.projects  === undefined || datatoSend.projects.length == 0){ %>
+            <div class="dash-no-load">
+                <i id="project-logo" class="fa-solid fa-diagram-project"></i>
+                <p class="main-disp">No Projects Currently</p>
+                <button class="add_project" ><a style="text-decoration: none;color:#d2d2d2" target="_blank"  href='/addProject1516302295?user_name=<%= datatoSend.user.username %>'+>Click here to add project</a></button>
+            </div>
+              <% } else{ %>  
+                <% datatoSend.projects.forEach(function(project){ %>
+                       
+                             <div class="project-block">
+                                <i id="block-logo" class="fa-solid fa-diagram-project"></i>
+                                <p class="block-head" ><%= project.project_name %></p>
+                                <div class="project-block-buttons">
+                                    <button onclick="PromptDelete('<%= project.id %>')" class="block-button"><a style="text-decoration: none;color:white">Delete</a></button>
+                                    <button class="block-button"><a style="text-decoration: none;color:white" href="/<%= datatoSend.user.username %>/project?id=<%= project.id %>"><i class="fa-solid fa-pen"></i>Edit</a></button>
+                                    <div id="<%= project.id %>" class="blackscreen">
+                                        <div class="prompt-delete">
+                                             <h2>Do you want to delete the project?</h2>
+                                             <div style="display:flex;gap:10%;">  <button class="delete-button"><a style="text-decoration: none;color:white" href="/<%= datatoSend.user.username %>/Delete?id=<%= project.id %>">Delete</a></button><button onclick="Close('<%= project.id %>')" class="no-button">No</button></div>
+                                        </div>
+                                     </div>
+                                    
+                                </div>
+
+                             </div>
+               <% }) %>
+               
+             <% } %>
+        </div>
+
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    
+
+    
+    function PromptDelete(id){
+        document.getElementById(id).style.display="flex"
+
+    }
+    function Close(id){
+        document.getElementById(id).style.display="none"
+
+    }
+    
+    
+</script>
+
+</html>

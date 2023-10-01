@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Code Editor</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id="cont" class="container">
+        <div class="block1" id="design_blocks"></div>
+        <div class="block2" id="design_blocks"></div>
+        <div class="block3" id="design_blocks">
+
+        </div>
+        <div class="block4" id="design_blocks2"></div>
+        <div class="block5" id="design_blocks2"></div>
+        <div class="block6" id="design_blocks2"></div>
+        <%- include('navbar.ejs') %>
+        <div class="main-body">
+              <div class="left-section">
+                    <p class="heading">Welcome To <span style="color:#71BC68">OnlineCodeEditor</span></p>
+                    <p class="descp">A Code editor for single page web applications where you can collaborate with poeple to create stunning single paged web designs.
+                        Design web pages at ease without installation of an IDE and collaborate with other users to create amazing web apps
+                    </p>
+                    <button class="sign_in_alt"><a style="text-decoration: none;color:white;" href="/register">Create First Project</a></button>
+              </div>
+              <div class="right-section">
+                <img class="body-img" src="/htmlcss.jpg">
+              </div>
+        </div>
+        <div class="lower-body">
+           <div class="descp-lower-block">
+             <h3>Free Code Editor</h3>
+             <p style="color:rgb(211, 211, 211)">Use our Free Code Editor to build responsive single paged web pages </p>
+           </div>
+           <div class="descp-lower-block">
+            <h3>Collaborate With Others</h3>
+            <p style="color:rgb(211, 211, 211)">Collab with your friends to creat unqiue pages to showcase your skills</p>
+          </div>
+          <div class="descp-lower-block">
+            <h3>User Interface</h3>
+            <p style="color:rgb(211, 211, 211)">Build pages easily with our easy to use interface</p>
+          </div>
+        </div>
+
+    </div>
+</body>
+<script>
+  function responsive(){
+
+   
+          document.getElementById('nav-long').style.display='flex'
+          document.getElementById('nav').style.visibility='hidden'
+         
+ lockScroll()
+
+
+// Unlock scroll
+
+
+// Prevent the default scroll behavi
+
+
+  }
+  function nav_close(){
+
+   
+document.getElementById('nav-long').style.display='none'
+document.getElementById('nav').style.visibility='visible'
+
+lockScroll()
+
+
+// Unlock scroll
+
+
+// Prevent the default scroll behavi
+
+
+}
+  function lockScroll() {
+  document.body.style.position = 'fixed';
+}
+</script>
+</html>
