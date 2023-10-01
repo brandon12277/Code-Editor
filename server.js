@@ -62,7 +62,7 @@ app.get('/login',(req,res)=>{
 app.post('/login', (req, res) => {
   console.log("yes")
   const userDetails = req.body;
-  console.log(userDetails)
+ 
   database.AuthenticateUser([userDetails.username], (error, results) => {
     if (error || results.length === 0 || !bcrypt.compareSync(userDetails.password, results[0].password)) {
       
@@ -93,7 +93,7 @@ app.get("/dashboard",(req,res)=>{
        return res.send(error)
       }
       else{
-        console.log(results)
+       
        
          datatoSend["projects"]=results
       }
@@ -178,11 +178,11 @@ app.get("/:username/project",(req,res)=>{
   database.RetrieveProjectForUser([Number(id)],(error,results)=>{
       if(error)res.send(error)
       else{
-        console.log(results[0])
+        
         const htmlContent = results[0].html
         const cssContent = results[0].css
         const jsContent = results[0].js
-        console.log(htmlContent)
+       
         return res.render("index",{htmlContent,cssContent,jsContent,project:results[0],link:'answer'})
     }
   })
@@ -218,11 +218,11 @@ app.get("/:username/projectCollab",(req,res)=>{
   const user = req.query.username
   const id= req.query.id
   const project_name= req.query.project_name
-  console.log(id)
+  
   database.RetrieveCollaborationProject([Number(id),project_name],(error,results)=>{
       if(error)res.send(error)
       else{
-        console.log(results[0])
+        
         const htmlContent = results[0].html
         const cssContent = results[0].css
         const jsContent = results[0].js
@@ -263,7 +263,7 @@ app.get("/:id/answerCollab",(req,res)=>{
 
 app.post("/:id/answerCollab",(req,res)=>{
   id = req.params.id
-  console.log(id)
+  
   html=req.body.html;
   css=req.body.css;
   js=req.body.js;
@@ -272,7 +272,7 @@ app.post("/:id/answerCollab",(req,res)=>{
   database.UpdateProjectForCollabUser([Number(id),html,css,js],(error,results)=>{
     if(error) res.send(error)
     else{
-      console.log("done")
+     
       res.render("answer",{CODE:code});
   }
   })
@@ -282,11 +282,11 @@ app.get("/:username/findproject",(req,res)=>{
   user_id = req.query.user_id
   proj_name=req.query.project_name;
   if(proj_name=="" || proj_name===undefined)res.send("")
- console.log(user_id,proj_name)
+ 
   database.GetProjectsAndUsersForList([Number(user_id),proj_name],(error,results)=>{
     if(error) res.send(error)
     else{
-  console.log(results)
+  
       res.send(results);
   }
   })
@@ -296,7 +296,7 @@ app.get("/:username/findproject",(req,res)=>{
 app.get("/addProject1516302295",(req,res)=>{
   if( req.session.userId){
     const user_name=req.query.user_name
-    console.log(user_name)
+    
     const uniqueShortID = generateUniqueNumericID()
     database.AddProjectForUser([uniqueShortID,req.session.userId],(error,results)=>{
       if(error) res.send(error)
@@ -313,7 +313,7 @@ app.get("/addProject1516302295",(req,res)=>{
 app.post("/:username/addCollabproject",(req,res)=>{
    let proj_id = req.body.proj_id;
    
-   console.log(req.session.userId,req.body.proj_id)
+   
    database.AddCollabProjectForUser([Number(proj_id),Number(req.session.userId)],(error,results)=>{
          if(error) res.send(error)
          else
@@ -324,7 +324,7 @@ app.post("/:id/AddRequest",(req,res)=>{
   let proj_id = req.body.proj_id;
   let title = req.body.title;
    let desc = req.body.description;
-   console.log(proj_id,title,desc)
+   
   database.AddRequest([Number(proj_id),Number(req.session.userId),title,desc],(error,results)=>{
         if(error) res.send(error)
         else
